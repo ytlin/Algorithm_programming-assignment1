@@ -1,10 +1,14 @@
 #include<iostream>
 #include<stdio.h>
+//#include<stdlib.h> //rand
+//#include<time.h> 
+
 using namespace std;
 
 
 void quiksort(int* N, int p, int r);  // N[p.......r]
 int partition(int* N, int p, int r); 
+int m3_partition(int* N, int p, int r);
 
 int main()
 {
@@ -20,7 +24,7 @@ void quiksort(int* N, int p, int r)
 {
     //如果p < r代表還沒sort結束
     if(p < r){
-        int q = partition(N,p,r); // N[p...q-1] q N[q+1...r]
+        int q = m3_partition(N,p,r); // N[p...q-1] q N[q+1...r]
         quiksort(N,p,q-1);        //q已經在正確位置，繼續sort左右兩半
         quiksort(N,q+1,r);
     }
@@ -49,4 +53,27 @@ int partition(int* N, int p, int r)
     N[r] = tmp;
     
     return i+1;  //q 就是 i+1
+}
+
+int m3_partition(int* N, int p, int r)
+{
+    int q , q1 = p , q2 = (r+p)/2 , q3 = r , tmp;
+    // q1 >= q2 >= q3
+    if(N[q1] < N[q3])
+    {
+        tmp = q1; q1=q3; q3 = tmp;
+    }
+    if(N[q2] < N[q3])
+    {
+        tmp = q2; q2=q3; q3 = tmp;
+    }
+    if(N[q1] < N[q2])
+    {
+        tmp = q1; q1=q2; q2 = tmp;
+    }
+    q = q2;
+    tmp = N[q];
+    N[q] = N[r];
+    N[r] = tmp;
+    return partition(N,p,r);
 }
