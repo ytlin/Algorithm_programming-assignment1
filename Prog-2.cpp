@@ -2,7 +2,7 @@
 #include<stdio.h>
 //#include<stdlib.h> //rand
 //#include<time.h> 
-
+#include<fstream> 
 using namespace std;
 
 
@@ -12,12 +12,23 @@ int m3_partition(int* N, int p, int r);
 
 int main()
 {
-    int N[11] = {0,2,8,7,1,3,5,6,-1,0,4};
-    quiksort(N,1,10);
-    for(int i=1;i<=10;i++)
+    ofstream fout;
+    ifstream fin;
+    fout.open("output2");
+    fin.open("testbench");
+
+    int N[10001];
+    int n = 1;
+    while(fin>>N[n])n++;
+
+    quiksort(N,1,10000);
+
+    for(int i=1;i<n;i++)
     {
-        printf("%d ",N[i]);
+        fout<<N[i]<<endl;
     }
+    fin.close();
+    fout.close();
 }
 
 void quiksort(int* N, int p, int r)

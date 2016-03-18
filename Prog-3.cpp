@@ -1,6 +1,6 @@
 #include<iostream>
 #include<stdio.h>
-
+#include<fstream>
 using namespace std;
 
 
@@ -11,12 +11,25 @@ int mid(int* N,int q1,int q2,int q3);
 
 int main()
 {
-    int N[11] = {0,2,8,7,1,3,5,6,-1,0,4};
-    quiksort(N,1,10);
-    for(int i=1;i<=10;i++)
+    ofstream fout;
+    ifstream fin;
+    fout.open("output3");
+    fin.open("testbench");
+                    
+    int N[10001];
+    int n = 1;
+    while(fin>>N[n])n++;
+                                   
+    quiksort(N,1,10000);
+                          
+    for(int i=1;i<n;i++)
     {
-        printf("%d ",N[i]);
-    }
+       fout<<N[i]<<endl;
+    }  
+
+    fin.close();
+    fout.close();
+
 }
 
 void quiksort(int* N, int p, int r)
