@@ -11,6 +11,7 @@ int mid(int* N,int q1,int q2,int q3);
 
 int main()
 {
+/*
     ofstream fout;
     ifstream fin;
     fout.open("output3");
@@ -29,7 +30,24 @@ int main()
 
     fin.close();
     fout.close();
+*/
 
+    int N[1010];
+    int n = 1;
+    char tmp;
+                
+    while(cin>>tmp,tmp != 'x')
+    {
+        cin.putback(tmp);
+        cin>>N[n++];
+    }
+    
+    quiksort(N,1,n-1);
+    cout<<endl;
+    for(int i=1;i<n;i++)
+    {
+        cout<<N[i]<<" ";
+    }
 }
 
 void quiksort(int* N, int p, int r)
