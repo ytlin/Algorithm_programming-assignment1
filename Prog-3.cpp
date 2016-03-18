@@ -56,10 +56,13 @@ int partition(int* N, int p, int r)
 
 int BM_partition(int* N, int p, int r)
 {
-    int q, tmp, b = (r-p+1)/9; 
-    if(b>=1)
+    int q, tmp, b = (r-p+1)/3 , b2; // b2 for record the block in the 3 group 
+    if(b>=3)
     {
-        int q1=p+b,q2=p+2*b,q3=p+3*b,q4=p+4*b,q5=p+5*b,q6=p+6*b,q7=p+7*b,q8=p+8*b,q9=p+9*b;
+        b2 = b/3;
+        int q1=p+b2,q2=p+2*b2,q3=p+3*b2,
+            q4=(p+b)+b2,q5=(p+b)+2*b2,q6=(p+b)+3*b2,
+            q7=(p+2*b)+b2,q8=(p+2*b)+2*b2,q9=(p+2*b)+3*b2;
         q1 = mid(N,q1,q2,q3);
         q2 = mid(N,q4,q5,q6);
         q3 = mid(N,q7,q8,q9);
