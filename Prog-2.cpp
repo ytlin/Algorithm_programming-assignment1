@@ -31,7 +31,7 @@ int main()
     fin.close();
     fout.close();
 */
-    int N[1010];
+    int N[100010];
     int n = 1;
     char tmp;
                 
