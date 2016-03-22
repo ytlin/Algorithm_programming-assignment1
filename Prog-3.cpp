@@ -1,6 +1,7 @@
 #include<iostream>
 #include<stdio.h>
 #include<fstream>
+#include<ctime>
 using namespace std;
 
 
@@ -30,8 +31,8 @@ int main()
 
     fin.close();
     fout.close();
-*/
 
+*/
     int N[1010];
     int n = 1;
     char tmp;
@@ -48,6 +49,7 @@ int main()
     {
         cout<<N[i]<<" ";
     }
+
 }
 
 void quiksort(int* N, int p, int r)
@@ -91,9 +93,9 @@ int BM_partition(int* N, int p, int r)
     if(b>=3)
     {
         b2 = b/3;
-        int q1=p+b2,q2=p+2*b2,q3=p+3*b2,
-            q4=(p+b)+b2,q5=(p+b)+2*b2,q6=(p+b)+3*b2,
-            q7=(p+2*b)+b2,q8=(p+2*b)+2*b2,q9=(p+2*b)+3*b2;
+        int q1=p,q2=p+b2,q3=p+2*b2,
+            q4=(p+b),q5=(p+b)+b2,q6=(p+b)+2*b2,
+            q7=(p+2*b),q8=(p+2*b)+b2,q9=(p+2*b)+2*b2;
         q1 = mid(N,q1,q2,q3);
         q2 = mid(N,q4,q5,q6);
         q3 = mid(N,q7,q8,q9);
